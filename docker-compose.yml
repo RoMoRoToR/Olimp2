@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  main_service:
+    build:
+      context: ./main_service
+      dockerfile: Dockerfile
+    ports:
+      - "9024:9024"
+    depends_on:
+      - server_selection_service
+
+  server_selection_service:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    ports:
+      - "9025:9025"
